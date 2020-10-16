@@ -9,19 +9,19 @@ const sauceSchema = mongoose.Schema({
   imageUrl: {type: String, required: true},
   mainPepper: {type: String, required: true},
   heat: {type: Number, required: true},
-  likes: {type: Number, required: true},
-  dislikes: {type: Number, required: true},
-  usersLiked: {type: [String], required: true},
-  usersDisliked: {type: [String], required: true}
+  likes: {type: Number, required: false},
+  dislikes: {type: Number, required: false},
+  usersLiked: {type: [String], required: false},
+  usersDisliked: {type: [String], required: false}
 });
 
 /*
 {
     "name": "Tartare",
-    "manufacturer": "moi-même", 
+    "manufacturer": "Myself", 
     "description": "Fish sauce",
-    "mainPepper": "cornichon",
-    "imageUrl": "https://media.istockphoto.com/photos/square-white-bowl-filled-with-tar...",
+    "mainPepper": "Pickle",
+    "imageUrl": "https://cdn.pixabay.com/photo/2015/11/16/16/28/haddock-1045953_960_720.jpg",
     "heat": 5,
     "likes": 10,
     "dislikes": 1,
