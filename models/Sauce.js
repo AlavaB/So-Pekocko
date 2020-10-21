@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 //Création du schéma de données
 const sauceSchema = mongoose.Schema({
+  userId: {type: mongoose.Schema.Types.ObjectId, ref: "user"},
   name: {type: String, required: true},
   manufacturer: {type: String, required: true},
   description: {type: String, required: true},
@@ -16,6 +17,8 @@ const sauceSchema = mongoose.Schema({
 });
 
 /*
+
+mongoose.Schema.Types.ObjectId, ref: "sauce"
 {
     "name": "Tartare",
     "manufacturer": "Myself", 

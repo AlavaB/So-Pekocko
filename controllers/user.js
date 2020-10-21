@@ -1,24 +1,24 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");//Package de cryptage pour les mots de passe
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/User");
 
 
 exports.signup = (req, res, next) => {//Fonction signup pour création de nouveaux users dans la base de données
-    bcrypt.hash(req.body.password, 10)//Cryptage du mot de passe
+    bcrypt.hash(req.body.password, 10)//Cryptage/hachage du mot de passe avec 10 tours
         .then(hash => { 
             const user = new User({
                 email: req.body.email,
                 password: hash
             });
-            user.save()//Enregistrement dans la base de données
+            user.save()//Enregistrement du user dans la base de données
                 .then(() => res.status(201).json({message: "Utilisateur créé !"}))
                 .catch(error => res.status(400).json({error}));
         })
         .catch(error => res.status(500).json({error}));
 };
 
-exports.login = (req, res, next) => {//Fonction login pour se connecter 
+exports.login = (req, res, next) => {//Fonction login pour connecter des users existants
     User.findOne({email: req.body.email})
         .then(user => {
             if (!user) {
