@@ -5,10 +5,10 @@ const sauceControllers = require("../controllers/sauce");
 const auth = require("../middleware/auth");//Permet de protéger mes routes
 const multer = require("../middleware/multer-config");
 
+/*********Logique de routing***********/
 router.post("/", auth, multer, sauceControllers.createSauce);
-//router.post("/:id/like", auth, multer, sauceControllers.likeSauce);
-//router.post("/:id/dislike", auth, multer, sauceControllers.dislikeSauce);
-router.put("/:id", auth, sauceControllers.modifySauce);
+router.post("/:id/like", auth, sauceControllers.likeSauce);
+router.put("/:id", auth, multer, sauceControllers.modifySauce);
 router.delete("/:id", auth, sauceControllers.deleteSauce);
 router.get("/:id", auth, sauceControllers.getOneSauce);
 router.get("/", auth, sauceControllers.getAllSauces);

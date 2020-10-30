@@ -7,7 +7,7 @@ const User = require("../models/User");
 exports.signup = (req, res, next) => {//Fonction signup pour création de nouveaux users dans la base de données
     bcrypt.hash(req.body.password, 10)//Cryptage/hachage du mot de passe avec 10 tours
         .then(hash => { 
-            const user = new User({
+            const user = new User({//Création nouveau user
                 email: req.body.email,
                 password: hash
             });

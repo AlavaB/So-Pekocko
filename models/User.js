@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");//Evite d'avoir plusieurs utilisateurs avec la même adresse email
 
 const userSchema = mongoose.Schema({
-    //userId: {type: mongoose.Schema.Types.ObjectId, ref: "user"},
+    userId: {type: mongoose.Schema.Types.ObjectId, ref: "user"},
     email: {type: String, required: true, unique: true},//Unique empêche de s'inscrire plusieurs fois avec la même adresse mail mais il faut en plus le package mongoose unique validator
     password: {type: String, required: true}
 });

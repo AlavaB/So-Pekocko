@@ -1,9 +1,10 @@
 const express = require('express');
-const bodyParser = require("body-parser");//Importation de body-parser pour extraire l'objet Json de la demande
+const bodyParser = require("body-parser");//Extraction de l'objet Json de la demande
 const mongoose = require("mongoose");
 const path = require("path");
 
-const userRoutes = require("./routes/user");//Importation du routeur
+/*******Importation du routeur*****/
+const userRoutes = require("./routes/user");
 const sauceRoutes = require("./routes/sauce");
 
 /*****Logique de connexion à MongoDB********/
@@ -24,12 +25,11 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());//Middleware global de la fonction json
-/*app.use(bodyParser.urlencoded({ extended: false }));*/
 
+/********Importation des mes routes*********/
 app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/api/auth", userRoutes);
 app.use("/api/sauces", sauceRoutes);
-
 
 
 
