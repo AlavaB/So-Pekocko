@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());//Middleware global de la fonction json
 
-/********Importation des mes routes*********/
+/********Importation des routes*********/
 app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/api/auth", userRoutes);
 app.use("/api/sauces", sauceRoutes);
