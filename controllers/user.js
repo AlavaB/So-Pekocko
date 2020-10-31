@@ -1,10 +1,20 @@
+//const mongoMask = require("mongo-mask");
 const bcrypt = require("bcrypt");//Package de cryptage pour les mots de passe
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/User");
 
-
+/*const map = {
+    id: "_id"
+}*/
 exports.signup = (req, res, next) => {//Fonction signup pour création de nouveaux users dans la base de données
+    /*const emailObject = req.body.email ? mongoMask(re.body.email, {map}) : null;
+    User.findOne({}, emailObject, (err, doc) => {
+        if (err) return next(err)
+        doc.id = doc._id;
+        delete doc.id;
+        res.json(doc)
+    }*/
     bcrypt.hash(req.body.password, 10)//Cryptage/hachage du mot de passe avec 10 tours
         .then(hash => { 
             const user = new User({//Création nouveau user
